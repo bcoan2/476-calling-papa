@@ -1,15 +1,2 @@
-#titleBar {
+@import url('https://fonts.googleapis.com/css?family=Audiowide');
 
-  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTc0R4Xp8hjygvPGzWwDNGESJ4vT1Gvy0a1aA&usqp=CAU);
-  background-size: cover;
-
-
-}
-
-
-.card-link {
-
-  color: black;
-
-
-}
