@@ -37,26 +37,44 @@ async function run() {
     await client.close();
   }
 }
-//run().catch(console.dir);
-
-app.get('/read', async (req,res) => {
-
-  let myResultServer = await run(); 
-
-  console.log("myResultServer:", myResultServer);
 
 
+app.get('/read', async (req, res) => {
+  let myResultServer;
+
+  try {
+    myResultServer = await run();
+    console.log("myResultServer:", myResultServer);
+  } catch (error) {
+    console.error("Error fetching data from MongoDB:", error);
+    return res.status(500).send('Internal Server Error');
+  }
 
   res.render('index', {
     myTypeClient: myTypeServer,
     myResultClient: myResultServer,
+  });
+});
+//run().catch(console.dir);
+
+// app.get('/read', async (req,res) => {
+
+//   let myResultServer = await run(); 
+
+//   console.log("myResultServer:", myResultServer);
+
+
+
+//   res.render('index', {
+//     myTypeClient: myTypeServer,
+//     myResultClient: myResultServer,
     
 
-  });
+//   });
 
 
-}); 
-run().catch(console.dir);
+// }); 
+// run().catch(console.dir);
 
 
 
