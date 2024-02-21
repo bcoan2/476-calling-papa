@@ -39,34 +39,18 @@ async function run() {
 }
 
 
-app.get('/read', async (req, res) => {
-  let myResultServer;
+run().catch(console.dir);
+app.get('/read', async (req,res) => {
+  let myResultServer = await run(); 
 
-  try {
-    myResultServer = await run();
-    console.log("myResultServer:", myResultServer);
-  } catch (error) {
-    console.error("Error fetching data from MongoDB:", error);
-    myResultServer = []; 
-  }
+  console.log("myResultServer:", myResultServer);
 
   res.render('index', {
     myTypeClient: myTypeServer,
     myResultClient: myResultServer,
   });
-});
-//run().catch(console.dir);
-// app.get('/read', async (req,res) => {
-//   let myResultServer = await run(); 
-
-//   console.log("myResultServer:", myResultServer);
-
-//   res.render('index', {
-//     myTypeClient: myTypeServer,
-//     myResultClient: myResultServer,
-//   });
-// }); 
-// run().catch(console.dir);
+}); 
+run().catch(console.dir);
 
 
 
