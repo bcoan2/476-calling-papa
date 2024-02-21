@@ -43,14 +43,10 @@ async function run() {
 }
 //run().catch(console.dir);
 
-app.get('/read', async (req,res) => {
+app.get('/', async (req,res) => {
 
   let dbResult = await run();
   console.log("myResults:", dbResult[0].userName);
-
-
-
-
   res.render('index', {
     myTypeClient: myTypeServer,
     myView: dbResult
@@ -59,20 +55,15 @@ app.get('/read', async (req,res) => {
 
 });
 
+// app.get('/', function(req, res) {
 
+//   res.render('index', {
+//     myTypeClient: myTypeServer 
 
-app.get('/', function(req, res) {
-
-  res.render('index', {
-    myTypeClient: myTypeServer 
-
-  });
-  
-});
-
+//   });
+// });
 
 app.get('/send', function (req, res) {
-  
     res.send('Hello World from Express <br><a href="/">home</a>')
 })
 
